@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: bash -c "bundle check || bundle install && rm -f tmp/pids/server.pid && bin/rails s -p 3000 -b '0.0.0.0'"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    links:
+      - postgres
+    ports:
+      - 3000:3000
+    expose:
+      - 3000
+
+  webpacker:
+    build: .
+    command: bin/webpack-dev-server
+    env_file:
+      - .env
+    ports:
+      - '3035:3035'
+
+  postgres:
+    image: postgres:10.4
+    env_file:
+      - .env
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+
+volumes:
+  postgresql_data:
