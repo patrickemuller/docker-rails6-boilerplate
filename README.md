@@ -1,67 +1,22 @@
-# Ordway Labs (test code)
+# Rails 6 template (with docker support)
 
-## INSTALLATION
+## Gems included
 
-### STANDALONE
+- PG
+- RSpec
+- Rubocop
+- Capybara
+- Webpacker
+- FactoryBot
 
-#### Dependencies
+## Docker features
 
-```
-NodeJS
-Yarn
-bundler
-ruby 2.7.0
-rails 6.0.0
-```
+- NPM & Yarn configure
+- (not implemented) Cache for Bundler
 
-Is the same process for a normal Rails standalone environment:
+## How to use this
 
-```shell
-$ cp .env.sample .env
-$ bin/bundle install
-$ bin/rails db:create db:migrate
-$ bin/rails s
-```
+Simple clone the project,run the usual commands to run a Rails App and you're good to go
 
-### DOCKER
-
-Some advantages of runningusinng Docker instead of standalone installation:
-
-- Simpler to install
-- Simpler to run and get up
-- All developers use the same installed packages
-- Is Operation System agnostic
-- You can mimitize production
-
-First, you need to copy ENV variables, build the container and install dependencies
-
-```shell
-$ cp .env.sample .env
-$ docker-compose build
-```
-
-Then, you can create the Rails' databases
-
-```shell
-$ docker-compose run web bin/rails db:create db:migrate
-```
-
-Now you can start the services with just one command:
-
-```shell
-$ docker-compose up
-```
-
-### RUNNING SPECS
-
-#### STANDALONE
-
-```shell
-$ bin/rspec
-```
-
-#### DOCKER
-
-```shell
-$ docker-compose run web bin/rspec
-```
+1. `git clone git@github.com:patrickemuller/rails-6-template.git`
+2. Rename all occurences of `App` to your new application name
