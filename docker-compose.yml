@@ -3,7 +3,7 @@ version: '3'
 services:
   web:
     build: .
-    command: bash -c "bundle check || bundle install && rm -f tmp/pids/server.pid && bin/rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "yarn install --check-files && bundle check || bundle install && rm -f tmp/pids/server.pid && bin/rails s -p 3000 -b '0.0.0.0'"
     env_file:
       - .env
     volumes:
